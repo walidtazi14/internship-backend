@@ -1,89 +1,103 @@
 var db = require("../database/db");
-var OffreService = require("../service/OffreService");
+var offreService = require("../service/offreService");
 
 
-var OffreDAO = function() {
+var offreDAO = function() {
 }
 
-OffreDAO.prototype = Object.create(OffreService.prototype);
+offreDAO.prototype = Object.create(offreService.prototype);
 
-OffreDAO.prototype.addOffre = function(data,callback) {
+offreDAO.prototype.addOffre = function(data,callback) {
 
 
-    var Offre = new db.OffreModel({
+    var offre = new db.offreModel({
 
-        "id_entreprise":data.id_entreprise,
-        "Nom" : data.Nom,
-        "dateDebut" : data.dateDebut,
-        "dateFin" : data.dateFin,
-        "specialite":data.specialite
+        id_entreprise:data.ObjectID(id_entreprise),
+        nom : data.nom,
+        dateDebut : Date(data.dateDebut),
+        dateFin : Date(data.dateDebut),
+        specialite:data.specialite
             
 
     });
 
-    Offre.save(callback);
+    offre.save(callback);
 }
-OffreDAO.prototype.updateOffre = function(data,callback) {
+offreDAO.prototype.updateOffre = function(data,callback) {
 
 
-    db.OffreModel.findOne({"_id":data.id},function(err,Offre) {
+    db.offreModel.findById({_id:data.id},function(err,offre) {
 
         if(err) callback(err,null);
         else {
 
-            Offre.id_entreprise = data.id_entreprise;
-            Offre.Nom = data.Nom;
-            Offre.dateDebut = data.dateDebut;
-            Offre.dateFin = data.dateFin;
-            Offre.save(callback);
+            
+            offre.nom = data.nom;
+            offre.dateDebut = data.dateDebut;
+            offre.dateFin = data.dateFin;
+
+            offre.save(callback);
 
         }
 
-    })
+    });
 }
-OffreDAO.prototype.deleteOffre = function(id,callback) {
+offreDAO.prototype.deleteoffre = function(id,callback) {
 
-  db.OffreModel.findOne({"_id":id},function(err,Offre){
+  db.offreModel.findOne({_id:id},function(err,offre){
 
      if(err) callback(err,null);
 
-     else Offre.remove(callback)
+     else offre.remove(callback)
 
   });
 }
-OffreDAO.prototype.findAll = function(callback) {
+offreDAO.prototype.findAll = function(callback) {
 
-    db.OffreModel.find({}).populate("stagiaire").exec(callback);
+    db.offreModel.find({},callback);
+
+}
+
+offreDAO.prototype.findById = function(id,callback) {
+
+    db.offreModel.findOne({_id:id},callback);
 
 }
 
-OffreDAO.prototype.findById = function(id,callback) {
+offreDAO.prototype.findBySpecialite = function(specialite,callback) {
 
-    db.OffreModel.findOne({"_id":id_entreprise}).populate("stagiaire").exec(callback);
+    db.offreModel.findOne({_specialite:specialite}).populate("stagiaire").exec(callback);
 
 }
-OffreDAO.prototype.attacherstagiaire = function(id,id_stagiaire,callback) {
 
-    db.OffreModel.findOne({"_id":id},function(err,Offre) {
+offreDAO.prototype.findByEntreprise = function(id_entreprise,callback) {
+
+    db.offreModel.findOne({_id_entreprise:id_entreprise}).populate("stagiaire").exec(callback);
+
+}
+
+offreDAO.prototype.attacherstagiaire = function(id,id_stagiaire,callback) {
+
+    db.offreModel.findOne({_id:id},function(err,offre) {
 
        if(err) callback(err,null);
        else {
 
-           Offre.stagiaire.push({"_id":id_stagiaire});
-           Offre.save(callback);
+           offre.stagiaire.push({_id:id_stagiaire});
+           offre.save(callback);
        }
     })
 
 }
-OffreDAO.prototype.dettacherstagiaire = function(id,id_stagiaire,callback) {
+offreDAO.prototype.dettacherstagiaire = function(id,id_stagiaire,callback) {
 
 
-    db.OffreModel.findOne({"_id":id},function(err,Offre) {
+    db.offreModel.findOne({_id:id},function(err,offre) {
 
        if(err) callback(err,null);
        else {
 
-           Offre.update({$pull : {"stagiaire":id_stagiaire}});
+           offre.update({$pull : {stagiaire:id_stagiaire}});
 
        }
 
@@ -92,4 +106,4 @@ OffreDAO.prototype.dettacherstagiaire = function(id,id_stagiaire,callback) {
 
 
 
-module.exports = new OffreDAO();
+module.exports = new offreDAO();

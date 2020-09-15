@@ -25,6 +25,7 @@ var stagiaire = new mongoose.Schema({
 });
 
 var demande = new mongoose.Schema({
+    id_stagiaire :String,
     nom_demaine : String,
     dateDebut : Date,
     dateFin : Date,
@@ -35,16 +36,17 @@ var demande = new mongoose.Schema({
 });
 
 var offre = new mongoose.Schema({
-    id_offre : String,
-    Nom : String,
+    id_entreprise : String,
+    nom : String,
     dateDebut : Date,
-    dateFin : Date
+    dateFin : Date,
+    specialite : String
 });
 
 
 
 var entreprise = new mongoose.Schema({
-    nom :String,
+       nom :String,
        ville : String,
        specialite : String,
        tele: Number,

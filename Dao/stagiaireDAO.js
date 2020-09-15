@@ -38,11 +38,15 @@ stagiaireDAO.prototype.findAll = function(callback) {
 }
 
 
+stagiaireDAO.prototype.findById = function(id,callback) {
 
+    db.stagiaireModel.findOne({_id:id},callback);
+
+}
 
 stagiaireDAO.prototype.updateStagiaire = function(data,callback) {
 
-    db.stagiaireModel.findOne({_id:data.id},function(err,stagiaire) {
+    db.stagiaireModel.findById({_id:data.id},function(err,stagiaire) {
 
         if(err) callback(err,null);
         else  {
@@ -50,14 +54,8 @@ stagiaireDAO.prototype.updateStagiaire = function(data,callback) {
             stagiaire.nom = data.nom;
             stagiaire.prenom = data.prenom;
             stagiaire.age = data.age;
-            db.stagiaireModel.cin=data.cin;
             stagiaire.email = data.email;
             stagiaire.dateNaissance = data.dateNaissance;
-            lieuNaissance= data.lieuNaissance;
-            specialite= data.specialite;
-            diplome= data.diplome;
-            tele=data.tele;
-            email=data.email;
 
             stagiaire.save(callback);
 
@@ -78,11 +76,7 @@ stagiaireDAO.prototype.deleteStagiaire = function(id,callback) {
     });
 
 }
-stagiaireDAO.prototype.findById = function(id,callback) {
 
-    db.stagiaireModel.findOne({_id:id},callback);
-
-}
 
 stagiaireDAO.prototype.findBySpecialite = function(specialite,callback) {
 

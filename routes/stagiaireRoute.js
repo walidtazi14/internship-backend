@@ -21,7 +21,7 @@ router.post("/add", function (req,res) {
     }
 
     
-    stagiaireDAO.addstagiaire(data, function (err, pt) {
+    stagiaireDAO.addStagiaire(data, function (err, pt) {
 
 
         if (err) res.send(err);
@@ -43,22 +43,23 @@ router.get("/list", function (req, res) {
 
 });
 
-router.post("/update", function (req, res) {
+router.put("/update/:id", function (req, res) {
 
+    let id = req.params.id;
     var data = {
 
-        id: req.body.id,
         nom: req.body.nom,
         prenom: req.body.prenom,
         email: req.body.email,
         age: req.body.age,
-        datenaissance: req.body.datenaissance
+        datenaissance: req.body.datenaissance,
+        id : id
     }
 
-    stagiaireDAO.updatestagiaire(data, function (err, lspt) {
+    stagiaireDAO.updateStagiaire(data, function (err, stagiaire) {
 
         if (err) res.send(err);
-        else res.send(lspt);
+        else res.send(stagiaire);
 
     });
 
@@ -71,7 +72,7 @@ router.delete("/delete", function(req, res) {
     stagiaireDAO.deleteStagiaire(id, function (err) {
 
         if (err)  res.send(err);
-        else res.send("OK");
+        else res.send("Deteted succesfully !");
 
     });
 
@@ -94,7 +95,7 @@ router.post("/byspecialite", function (req, res) {
 router.post("/byid", function (req, res) {
 
     var id = req.body.id;
-S
+
     stagiaireDAO.findById(id, function (err, stagiaire) {
         if (err) res.send(err);
         else res.send(stagiaire);

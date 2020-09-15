@@ -4,7 +4,7 @@ var userService = function() {
 }
 
 
-userService.prototype.register = function() {}
+userService.prototype.signup = function() {}
 userService.prototype.login = function() {}
 
 

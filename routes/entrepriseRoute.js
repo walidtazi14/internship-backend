@@ -38,10 +38,12 @@ router.get("/list",function(req,res) {
 
 });
 
-router.post("/update",function(req,res) {
+router.put("/update/:id",function(req,res) {
+
+    let id = req.params.id;
 
     var data = {
-
+        id :id,
         nom:req.body.nom,
         ville : req.body.ville,
         specialite : req.body.specialite,
@@ -67,13 +69,22 @@ router.post("/delete",function(req,res) {
     entrepriseDAO.deleteEntreprise(id,function(err) {
 
         if(err) res.send(err);
-        else res.send("OK");
+        else res.send("Deteted succesfully !");
     
     });
 
 });
 
+router.post("/byid", function (req, res) {
 
+    var id = req.body.id;
+
+    entrepriseDAO.findById(id, function (err, entreprise) {
+        if (err) res.send(err);
+        else res.send(entreprise);
+    });
+
+});
 
 
 router.post("/bySpecialite",function(req,res) {

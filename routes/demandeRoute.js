@@ -34,11 +34,12 @@ router.get("/list",function(req,res) {
 
 });
 
-router.post("/update",function(req,res) {
+router.put("/update/:id",function(req,res) {
+    let id = req.params.id;
 
     var data = {
 
-        id_stagiaire : req.body.id_stagiaire,
+        id: id,
         nom:req.body.nom,
         nom_demaine:req.body.nom,
         dateDebut:req.body.dateDebut,
@@ -64,20 +65,18 @@ router.post("/delete",function(req,res) {
     demandeDAO.deleteDemande(id,function(err) {
 
         if(err) res.send(err);
-        else res.send("OK");
+        else res.send("Deteted succesfully !");
 
     });
 
 });
 
 
+router.post("/byId",function(req,res) {
 
+    var id = req.body.id;
 
-router.post("/byspecialite",function(req,res) {
-
-    var specialite = req.body.specialite;
-
-    demandeDAO.findById(id,function(err,demande) {
+    demandeDAO.findById(demande,function(err,demande) {
 
         if(err) res.send(err);
         else res.send(demande);
@@ -86,6 +85,32 @@ router.post("/byspecialite",function(req,res) {
 
 });
 
+router.post("/byspecialite",function(req,res) {
+
+    var specialite = req.body.specialite;
+
+    demandeDAO.findBySpecialite(specialite,function(err,demande) {
+
+        if(err) res.send(err);
+        else res.send(demande);
+
+    });
+
+});
+
+router.post("/ByStagiaire",function(req,res) {
+
+    var id_stagiaire = req.body.id_stagiaire;
+
+
+    demandeDAO.findByStagiaire(id_stagiaire,function(err,demande) {
+
+        if(err) res.send(err);
+        else res.send(demande);
+
+    });
+
+});
 
 module.exports = router;
 

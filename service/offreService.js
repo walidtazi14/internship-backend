@@ -9,6 +9,8 @@ offreService.prototype.updateOffre = function() {}
 offreService.prototype.deleteOffre = function() {}
 offreService.prototype.findAll = function() {}
 offreService.prototype.findById = function() {}
+offreService.prototype.findBySpecialite = function(){}
+offreService.prototype.findByStagiaire = function() {}
 offreService.prototype.attacherOffre = function() {}
 offreService.prototype.dettacherOffre = function() {}
 

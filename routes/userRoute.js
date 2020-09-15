@@ -1,10 +1,10 @@
 var express = require("express");
-var jwt = require('jsonwebtoken');
+var jwt = require('json-web-token');
 
 //npm install md5
 //npm install json-web-token
 
-//var key  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiU3RyaW5nIiwicGFzc3dvcmQiOiIyNzExODMyNjAwNmQzODI5NjY3YTQwMGFkMjNkNWQ5OCJ9LCJpYXQiOjE1OTk4NDA1Mzh9.yzFk60Mm6fQzEuq8pFifTmBNSL6PbtHMEXzRicXDPTY";
+var key  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiU3RyaW5nIiwicGFzc3dvcmQiOiIyNzExODMyNjAwNmQzODI5NjY3YTQwMGFkMjNkNWQ5OCJ9LCJpYXQiOjE1OTk4NDA1Mzh9.yzFk60Mm6fQzEuq8pFifTmBNSL6PbtHMEXzRicXDPTY";
 
 var router = express.Router();
 
@@ -36,7 +36,7 @@ router.post("/login",function(req,res) {
         password : req.body.password
     }
 
-jwt.sign({data},'secretKey',function(err,token)
+userDAO.login(data,function(err,user)
 {
     if(err) res.send(err);
     else {

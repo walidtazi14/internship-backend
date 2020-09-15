@@ -1,5 +1,5 @@
 var express = require("express");
-var jwt = require('json-web-token');
+var jwt = require('jsonwebtoken');
 
 //npm install md5
 //npm install json-web-token
@@ -29,28 +29,30 @@ router.post("/signup",function(req,res) {
 
 });
 
+
 router.post("/login",function(req,res) {
 
     var data = {
         username : req.body.username,
         password : req.body.password
     }
-
 userDAO.login(data,function(err,user)
 {
     if(err) res.send(err);
     else {
         if(user) {
-            // generate token
-            jwt.encode(key, {username: data.username}, function (err, token) {
-        if (err) res.send("generate token error");
-        else res.send(token)
-    })
-} else res.send("user not found");
-
-}
+jwt.sign({username:user.username},key,function(err,token)
+{
+    if (err) {
+        res.send({ message: "something's wrongs !"})
+    }
+        res.send({ token})
+})
+    }else res.send("user not found");
+    }
+})
 });
 
-});
+
 
 module.exports = router;

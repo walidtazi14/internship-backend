@@ -4,14 +4,15 @@ var router = express.Router();
 
 var stagiaireDAO = require("../DAO/stagiaireDAO");
 
-router.post("/add", function (req,res) {
+var auth = require("../routes/auth");
+
+router.post("/add", auth,function (req,res) {
 
     var data = {
         nom: req.body.nom,
         prenom: req.body.prenom,
         cin:req.body.cin,
         email: req.body.email,
-        age: req.body.age,
         dateNaissance: req.body.dateNaissance,
         lieuNaissance:req.body.lieuNaissance,
         specialite: req.body.specialite,
@@ -33,7 +34,7 @@ router.post("/add", function (req,res) {
 });
 
 
-router.get("/list", function (req, res) {
+router.get("/list",auth, function (req, res) {
 
                 stagiaireDAO.findAll(function (err, lspt) {
 
@@ -43,7 +44,7 @@ router.get("/list", function (req, res) {
 
 });
 
-router.put("/update/:id", function (req, res) {
+router.put("/update/:id", auth,function (req, res) {
 
     let id = req.params.id;
     var data = {
@@ -65,7 +66,7 @@ router.put("/update/:id", function (req, res) {
 
 });
 
-router.delete("/delete", function(req, res) {
+router.delete("/delete",auth, function(req, res) {
 
     var id = req.body.id;
 
@@ -79,7 +80,7 @@ router.delete("/delete", function(req, res) {
 });
 
 
-router.post("/byspecialite", function (req, res) {
+router.post("/byspecialite",auth, function (req, res) {
 
     var specialite = req.body.specialite;
 
@@ -92,7 +93,7 @@ router.post("/byspecialite", function (req, res) {
 
 });
 
-router.post("/byid", function (req, res) {
+router.post("/byid",auth, function (req, res) {
 
     var id = req.body.id;
 

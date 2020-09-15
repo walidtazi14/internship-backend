@@ -3,9 +3,10 @@ var express = require("express");
 var router = express.Router();
 
 var offreDAO = require("../DAO/offreDAO");
+var auth = require("../routes/auth");
 
 
-router.post("/add",function(req,res) {
+router.post("/add",auth,function(req,res) {
 
    var data = {
        id_entreprise:req.body.id_entreprise,
@@ -14,7 +15,7 @@ router.post("/add",function(req,res) {
        dateFin : req.body.dateFin,
        specialite : req.body.specialite
    }
-   console.log(data);
+   
 
     offreDAO.addOffre(data,function(err,offre) {
 
@@ -28,7 +29,7 @@ router.post("/add",function(req,res) {
 });
 
 
-router.get("/list",function(req,res) {
+router.get("/list",auth,function(req,res) {
 
     offreDAO.findAll(function(err,lsoffre) {
 
@@ -39,7 +40,7 @@ router.get("/list",function(req,res) {
 
 });
 
-router.put("/update/:id",function(req,res) {
+router.put("/update/:id",auth,function(req,res) {
 
     let id = req.params.id;
 
@@ -53,7 +54,7 @@ router.put("/update/:id",function(req,res) {
 
     }
 
-    offreDAO.updateOffre(data,function(err,offre) {
+    offreDAO.updateOffre(data,auth,function(err,offre) {
 
         if(err) res.send(err);
         else res.send(offre);
@@ -62,7 +63,7 @@ router.put("/update/:id",function(req,res) {
 
 });
 
-router.post("/delete",function(req,res) {
+router.post("/delete",auth,function(req,res) {
 
     var id_entreprise = req.body.id_entreprise;
     
@@ -76,7 +77,7 @@ router.post("/delete",function(req,res) {
 });
 
 
-router.post("/offre/attacher",function(req,res) {
+router.post("/offre/attacher",auth,function(req,res) {
 
 
 
@@ -89,7 +90,7 @@ router.post("/offre/attacher",function(req,res) {
 
 });
 
-router.post("/offre/dettacher",function(req,res) {
+router.post("/offre/dettacher",auth,function(req,res) {
 
     offreDAO.dettacherOffre(req.body.id,req.body.id_offre,function(err,offre) {
 
@@ -104,7 +105,7 @@ router.post("/offre/dettacher",function(req,res) {
 
 
 
-router.post("/byStagiaire",function(req,res) {
+router.post("/byStagiaire",auth,function(req,res) {
 
     var id_entreprise =req.body.id_entreprise;
 
@@ -117,7 +118,7 @@ router.post("/byStagiaire",function(req,res) {
 
 });
 
-router.post("/bySpecialite",function(req,res) {
+router.post("/bySpecialite",auth,function(req,res) {
 
     var specialite =req.body.specialite;
 
@@ -129,6 +130,7 @@ router.post("/bySpecialite",function(req,res) {
 
 
 });
+
 
 
 module.exports = router;

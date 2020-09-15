@@ -14,7 +14,6 @@ var stagiaire = new mongoose.Schema({
         
         nom : String,
         prenom : String,
-        age : Date,
         cin:String,
         dateNaissance : Date,
         lieuNaissance: String,

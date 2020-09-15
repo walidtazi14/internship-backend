@@ -4,8 +4,10 @@ var router = express.Router();
 
 var entrepriseDAO = require("../DAO/entrepriseDAO");
 
+var auth = require("../routes/auth");
 
-router.post("/add",function(req,res) {
+
+router.post("/add",auth,function(req,res) {
 
     var data = {
         nom:req.body.nom,
@@ -27,7 +29,7 @@ router.post("/add",function(req,res) {
 });
 
 
-router.get("/list",function(req,res) {
+router.get("/list",auth,function(req,res) {
 
     entrepriseDAO.findAll(function(err,lsentreprise) {
 
@@ -38,7 +40,7 @@ router.get("/list",function(req,res) {
 
 });
 
-router.put("/update/:id",function(req,res) {
+router.put("/update/:id",auth,function(req,res) {
 
     let id = req.params.id;
 
@@ -62,7 +64,7 @@ router.put("/update/:id",function(req,res) {
 
 });
 
-router.post("/delete",function(req,res) {
+router.post("/delete",auth,function(req,res) {
 
     var cin = req.body.cin;
 
@@ -75,7 +77,7 @@ router.post("/delete",function(req,res) {
 
 });
 
-router.post("/byid", function (req, res) {
+router.post("/byid",auth, function (req, res) {
 
     var id = req.body.id;
 
@@ -87,7 +89,7 @@ router.post("/byid", function (req, res) {
 });
 
 
-router.post("/bySpecialite",function(req,res) {
+router.post("/bySpecialite",auth,function(req,res) {
 
     var specialite = req.body.specialite;
 

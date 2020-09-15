@@ -1,8 +1,9 @@
 var express = require("express");
 var router = express.Router();
 var demandeDAO = require("../DAO/demandeDAO");
+var auth = require("../routes/auth");
 
-router.post("/add",function(req,res) {
+router.post("/add",auth,function(req,res) {
 
     var data = {
         id_stagiaire:req.body.id_stagiaire,
@@ -23,7 +24,7 @@ router.post("/add",function(req,res) {
 
 
 
-router.get("/list",function(req,res) {
+router.get("/list",auth,function(req,res) {
 
     demandeDAO.findAll(function(err,lsdemande) {
 
@@ -34,7 +35,8 @@ router.get("/list",function(req,res) {
 
 });
 
-router.put("/update/:id",function(req,res) {
+
+router.put("/update/:id",auth,function(req,res) {
     let id = req.params.id;
 
     var data = {
@@ -58,7 +60,7 @@ router.put("/update/:id",function(req,res) {
 
 });
 
-router.post("/delete",function(req,res) {
+router.post("/delete",auth,function(req,res) {
 
     var id = req.body.id;
 
@@ -72,7 +74,7 @@ router.post("/delete",function(req,res) {
 });
 
 
-router.post("/byId",function(req,res) {
+router.post("/byId",auth,function(req,res) {
 
     var id = req.body.id;
 
@@ -85,7 +87,7 @@ router.post("/byId",function(req,res) {
 
 });
 
-router.post("/byspecialite",function(req,res) {
+router.post("/byspecialite",auth,function(req,res) {
 
     var specialite = req.body.specialite;
 
@@ -98,7 +100,7 @@ router.post("/byspecialite",function(req,res) {
 
 });
 
-router.post("/ByStagiaire",function(req,res) {
+router.post("/ByStagiaire",auth,function(req,res) {
 
     var id_stagiaire = req.body.id_stagiaire;
 

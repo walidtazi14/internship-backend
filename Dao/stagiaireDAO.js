@@ -16,7 +16,6 @@ stagiaireDAO.prototype.addStagiaire = function(data,callback) {
         nom : data.nom,
         prenom : data.prenom,
         email : data.email,
-        age : data.age,
         cin : data.cin,
         dateNaissance : data.dateNaissance,
         lieuNaissance: data.lieuNaissance,
@@ -53,7 +52,6 @@ stagiaireDAO.prototype.updateStagiaire = function(data,callback) {
 
             stagiaire.nom = data.nom;
             stagiaire.prenom = data.prenom;
-            stagiaire.age = data.age;
             stagiaire.email = data.email;
             stagiaire.dateNaissance = data.dateNaissance;
 

@@ -72,5 +72,8 @@ entrepriseDAO.prototype.findBySpecialite = function(specialite,callback) {
 
     db.entrepriseModel.find({_specialite:specialite},callback);
 }
+entrepriseDAO.prototype.countst = function(callback) {
+    db.entrepriseModel.countDocuments(callback);
+}
 
 module.exports = new entrepriseDAO();

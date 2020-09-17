@@ -22,7 +22,7 @@ stagiaireDAO.prototype.addStagiaire = function(data,callback) {
         specialite: data.specialite,
         diplome: data.diplome,
         tele:data.tele,
-        email:data.email
+        username:data.username
     });
 
 
@@ -40,6 +40,12 @@ stagiaireDAO.prototype.findAll = function(callback) {
 stagiaireDAO.prototype.findById = function(id,callback) {
 
     db.stagiaireModel.findOne({_id:id},callback);
+
+}
+
+stagiaireDAO.prototype.findByusername = function(username,callback) {
+
+    db.stagiaireModel.findOne({username:username},callback);
 
 }
 
@@ -82,7 +88,9 @@ stagiaireDAO.prototype.findBySpecialite = function(specialite,callback) {
 
 }
 
-
+stagiaireDAO.prototype.countst = function(callback) {
+    db.stagiaireModel.countDocuments(callback);
+}
 
 
 module.exports = new stagiaireDAO();

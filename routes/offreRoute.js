@@ -39,7 +39,15 @@ router.get("/list",auth,function(req,res) {
     } )
 
 });
+router.get("/count", function (req, res) {
 
+    offreDAO.countst(function (err, lspt) {
+
+        if (err) res.send(err);
+        else res.send({"count":lspt});
+    });
+
+});
 router.put("/update/:id",auth,function(req,res) {
 
     let id = req.params.id;

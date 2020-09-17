@@ -7,7 +7,7 @@ var entrepriseDAO = require("../DAO/entrepriseDAO");
 var auth = require("../routes/auth");
 
 
-router.post("/add",auth,function(req,res) {
+router.post("/add",function(req,res) {
 
     var data = {
         nom:req.body.nom,
@@ -36,6 +36,15 @@ router.get("/list",auth,function(req,res) {
         if(err) res.send(err);
         else res.send(lsentreprise);
 
+    });
+
+});
+router.get("/count", function (req, res) {
+
+    entrepriseDAO.countst(function (err, lspt) {
+
+        if (err) res.send(err);
+        else res.send({"count":lspt});
     });
 
 });

@@ -3,9 +3,10 @@ var mongoose = require("mongoose");
 
 var user= new mongoose.Schema({
 
-name : String,
+nom : String,
 username :{type :String,require:true,index:{unique:true}},
-password :{type:String,require:true,select:false}
+password :{type:String,require:true,select:false},
+role : {type:Boolean,require:true,default:1}
 
 });
 
@@ -20,7 +21,8 @@ var stagiaire = new mongoose.Schema({
         specialite: String,
         diplome: String,
         tele:Number,
-        email:String
+        email:String,
+        username:String
 });
 
 var demande = new mongoose.Schema({
@@ -39,7 +41,8 @@ var offre = new mongoose.Schema({
     nom : String,
     dateDebut : Date,
     dateFin : Date,
-    specialite : String
+    specialite : String,
+    
 });
 
 
@@ -49,7 +52,8 @@ var entreprise = new mongoose.Schema({
        ville : String,
        specialite : String,
        tele: Number,
-       email:String
+       email:String,
+       username:String
     
 });
 

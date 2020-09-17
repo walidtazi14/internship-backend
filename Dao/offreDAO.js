@@ -103,6 +103,9 @@ offreDAO.prototype.dettacherstagiaire = function(id,id_stagiaire,callback) {
 
     });
 }
+offreDAO.prototype.countst = function(callback) {
+    db.offreModel.countDocuments(callback);
+}
 
 
 

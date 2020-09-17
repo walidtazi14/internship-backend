@@ -6,7 +6,7 @@ var stagiaireDAO = require("../DAO/stagiaireDAO");
 
 var auth = require("../routes/auth");
 
-router.post("/add", auth,function (req,res) {
+router.post("/add",function (req,res) {
 
     var data = {
         nom: req.body.nom,
@@ -18,7 +18,8 @@ router.post("/add", auth,function (req,res) {
         specialite: req.body.specialite,
         diplome: req.body.diplome,
         tele:req.body.tele,
-        email:req.body.email
+        email:req.body.email,
+        username:req.body.username
     }
 
     
@@ -41,6 +42,16 @@ router.get("/list",auth, function (req, res) {
                     if (err) res.send(err);
                     else res.send(lspt);
                 });
+
+});
+
+router.get("/count", function (req, res) {
+
+    stagiaireDAO.countst(function (err, lspt) {
+
+        if (err) res.send(err);
+        else res.send({"count":lspt});
+    });
 
 });
 

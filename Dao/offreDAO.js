@@ -16,7 +16,11 @@ offreDAO.prototype.addOffre = function(data,callback) {
         nom : data.nom,
         dateDebut : Date(data.dateDebut),
         dateFin : Date(data.dateDebut),
-        specialite:data.specialite
+        specialite:data.specialite,
+        description :data.description,
+        diplome : data.diplome,
+        remuneration : data.remuneration,
+        lieu : data.lieu
             
 
     });
@@ -35,6 +39,12 @@ offreDAO.prototype.updateOffre = function(data,callback) {
             offre.nom = data.nom;
             offre.dateDebut = data.dateDebut;
             offre.dateFin = data.dateFin;
+            offre.specialite = data.specialite;
+            offre.email =data.email;
+            offre.description =data.description;
+            offre.diplome = data.diplome;
+            offre.remuneration = data.remuneration;
+            offre.lieu = data.lieu;
 
             offre.save(callback);
 

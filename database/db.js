@@ -42,6 +42,10 @@ var offre = new mongoose.Schema({
     dateDebut : Date,
     dateFin : Date,
     specialite : String,
+    description :String,
+    diplome :String,
+    remuneration : String,
+    lieu : String
     
 });
 

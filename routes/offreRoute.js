@@ -13,7 +13,11 @@ router.post("/add",auth,function(req,res) {
        nom:req.body.nom,
        dateDebut : req.body.dateDebut,
        dateFin : req.body.dateFin,
-       specialite : req.body.specialite
+       specialite : req.body.specialite,
+       description : req.body.description,
+       diplome :req.body.diplome,
+       remunaration : req.body.remunaration,
+       lieu : req.body.lieu
    }
    
 
@@ -58,7 +62,11 @@ router.put("/update/:id",auth,function(req,res) {
         nom:req.body.nom,
         dateDebut:req.body.dateDebut,
         dateFin:req.body.dateFin,
-        specialite:req.body.specialite
+        specialite:req.body.specialite,
+        description:req.body.description,
+        diplome:req.body.diplome,
+        remunaration:req.body.remunaration,
+        lieu:req.body.lieu
 
     }
 
@@ -95,7 +103,6 @@ router.post("/offre/attacher",auth,function(req,res) {
         else res.send(offre);
 
     })
-
 });
 
 router.post("/offre/dettacher",auth,function(req,res) {
@@ -109,10 +116,6 @@ router.post("/offre/dettacher",auth,function(req,res) {
 
 
 });
-
-
-
-
 router.post("/byStagiaire",auth,function(req,res) {
 
     var id_entreprise =req.body.id_entreprise;

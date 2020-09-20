@@ -7,11 +7,16 @@ router.post("/add",auth,function(req,res) {
 
     var data = {
         id_stagiaire:req.body.id_stagiaire,
-        nom_demaine:req.body.nom,
+        nom:req.body.nom,
         dateDebut:req.body.dateDebut,
         dateFin:req.body.dateFin,
         specialite:req.body.specialite,
-        description:req.body.description
+        description:req.body.description,
+        nbrPersonne:req.body.nbrPersonne,
+        remuneration:req.body.remuneration,
+        niveau:req.body.niveau,
+        specialite:req.body.specialite
+        
     }
 
     demandeDAO.addDemande(data,function(err,demande) {
@@ -43,11 +48,14 @@ router.put("/update/:id",auth,function(req,res) {
 
         id: id,
         nom:req.body.nom,
-        nom_demaine:req.body.nom,
         dateDebut:req.body.dateDebut,
         dateFin:req.body.dateFin,
         specialite:req.body.specialite,
-        description:req.body.description
+        description:req.body.description,
+        nbrPersonne:req.body.nbrPersonne,
+        remuneration:req.body.remuneration,
+        niveau:req.body.niveau,
+        diplome:req.body.diplome
 
     }
 

@@ -14,11 +14,16 @@ demandeDAO.prototype.addDemande = function(data,callback) {
 
     var demande = new db.demandeModel({
         id_stagiaire :data.id_stagiaire,
-        nom_demaine:data.nom_demaine,
-        dateDebut : data.dateDebut,
-        dateFin : data.dateFin,
-        specialite : data.specialite,
-        description : data.description
+        nom : data.nom,
+        dateDebut : Date(data.dateDebut),
+        dateFin : Date(data.dateDebut),
+        specialite:data.specialite,
+        description :data.description,
+        nbrPersonne :data.nbrPersonne,
+        remuneration:data.remuneration,
+        niveau : data.niveau,
+        diplome : data.diplome
+
 
     });
 
@@ -35,11 +40,15 @@ demandeDAO.prototype.updateDemande = function(data,callback) {
         else {
         
            
-            demande.nom_demaine = data.nom_demaine;
+            demande.nom = data.nom;
             demande.dateDebut = data.dateDebut;
             demande.dateFin = data.dateFin;
             demande.specialite=data.specialite;
             demande.description=data.description;
+            demande.nbrPersonne=data.nbrPersonne;
+            demande.remuneration=data.remuneration;
+            demande.niveau=data.niveau;
+            demande.diplome=data.diplome;
 
             demande.save(callback)
         }

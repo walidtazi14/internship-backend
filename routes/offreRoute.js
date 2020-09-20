@@ -5,9 +5,7 @@ var router = express.Router();
 var offreDAO = require("../DAO/offreDAO");
 var auth = require("../routes/auth");
 
-
 router.post("/add",auth,function(req,res) {
-
    var data = {
        id_entreprise:req.body.id_entreprise,
        nom:req.body.nom,
@@ -15,9 +13,10 @@ router.post("/add",auth,function(req,res) {
        dateFin : req.body.dateFin,
        specialite : req.body.specialite,
        description : req.body.description,
-       diplome :req.body.diplome,
+       nbrPersonne :req.body.nbrPersonne,
        remunaration : req.body.remunaration,
-       lieu : req.body.lieu
+       niveau : req.body.niveau,
+       diplome :req.body.diplome
    }
    
 
@@ -55,7 +54,6 @@ router.get("/count", function (req, res) {
 router.put("/update/:id",auth,function(req,res) {
 
     let id = req.params.id;
-
     var data = {
 
         id : id,
@@ -64,9 +62,10 @@ router.put("/update/:id",auth,function(req,res) {
         dateFin:req.body.dateFin,
         specialite:req.body.specialite,
         description:req.body.description,
-        diplome:req.body.diplome,
+        nbrPersonne:req.body.nbrPersonne,
         remunaration:req.body.remunaration,
-        lieu:req.body.lieu
+        niveau:req.body.niveau,
+        diplome:req.body.diplome
 
     }
 

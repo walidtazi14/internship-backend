@@ -22,6 +22,7 @@ var stagiaire = new mongoose.Schema({
         diplome: String,
         tele:Number,
         email:String,
+        description:String,
         username:String
 });
 

@@ -22,7 +22,8 @@ stagiaireDAO.prototype.addStagiaire = function(data,callback) {
         specialite: data.specialite,
         diplome: data.diplome,
         tele:data.tele,
-        username:data.username
+        username:data.username,
+        description :data.description
     });
 
 

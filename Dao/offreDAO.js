@@ -122,6 +122,44 @@ offreDAO.prototype.countst = function(callback) {
     db.offreModel.countDocuments(callback);
 }
 
+var nodemailer = require('nodemailer');
+var stagiaireDAO = require('./stagiaireDAO')
+var entrepriseDAO = require('./entrepriseDAO')
+
+offreDAO.prototype.apply = function(data,callback){
+
+    stagiaireDAO.findByusername(data.username,function (err, stagiaire) {
+        entrepriseDAO.findById(data.offre.id_entreprise,function (err, entreprise){
+
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                  user: 'lanina.internship@gmail.com',
+                  pass: 'lanina@@12'
+                }
+              });
+              
+              var mailOptions = {
+                from: 'lanina.internship@gmail.com',
+                to: entreprise.email,
+                subject: stagiaire.nom+' is interested by you offer',
+                text: stagiaire.nom+'(email: '+stagiaire.email+') \n is interested in the offer N: '+data.offre._id+'( '+data.offre.nom+')'
+              };
+              
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+
+        })
+    })
+
+    
+}
+
 
 
 module.exports = new offreDAO();

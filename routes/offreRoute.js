@@ -142,5 +142,24 @@ router.post("/bySpecialite",auth,function(req,res) {
 });
 
 
+router.post("/apply",function(req,res) {
+   
+    var data = {
+
+        offre : req.body.offre,
+        username:req.body.username
+       }
+
+
+    offreDAO.apply(data,function(err,offre){
+
+        if(err) res.send(err);
+        else res.send(offre);
+    })
+
+
+});
+
+
 
 module.exports = router;

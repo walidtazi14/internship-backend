@@ -12,10 +12,10 @@ offreDAO.prototype.addOffre = function(data,callback) {
 
     var offre = new db.offreModel({
 
-        id_entreprise:data.ObjectID(id_entreprise),
+        id_entreprise:data.id_entreprise,
         nom : data.nom,
-        dateDebut : Date(data.dateDebut),
-        dateFin : Date(data.dateDebut),
+        dateDebut :new Date(data.dateDebut),
+        dateFin :new Date(data.dateFin),
         specialite:data.specialite,
         description :data.description,
         nbrPersonne :data.nbrPersonne,

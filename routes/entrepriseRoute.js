@@ -15,7 +15,8 @@ router.post("/add",function(req,res) {
         specialite : req.body.specialite,
         ville : req.body.ville,
         tele:req.body.tele,
-        email:req.body.email
+        email:req.body.email,
+        username:req.body.username
 
     }
 
@@ -108,6 +109,20 @@ router.post("/bySpecialite",auth,function(req,res) {
         else res.send(entreprise);
 
     });
+
+});
+
+router.post("/byusername",function(req,res) {
+
+    var username = req.body.username;
+
+    entrepriseDAO.findByusername(username, function (err, stagiaire) {
+
+        if (err) res.send(err);
+        else res.send(stagiaire);
+
+    }); 
+
 
 });
 

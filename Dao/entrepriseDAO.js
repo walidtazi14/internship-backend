@@ -16,7 +16,8 @@ entrepriseDAO.prototype.addEntreprise = function(data,callback) {
        ville : data.ville,
        specialite : data.specialite,
        tele: data.tele,
-       email:data.email
+       email:data.email,
+       username:data.username
 
    });
 
@@ -28,7 +29,11 @@ entrepriseDAO.prototype.findById = function(id,callback) {
     db.entrepriseModel.findOne({_id:id},callback);
 
 }
+entrepriseDAO.prototype.findByusername = function(username,callback) {
 
+    db.entrepriseModel.findOne({username:username},callback);
+
+}
 entrepriseDAO.prototype.updateEntreprise = function(data,callback) {
 
     db.entrepriseModel.findById({_id:data.id},function(err,entreprise) {

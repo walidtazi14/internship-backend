@@ -15,8 +15,8 @@ demandeDAO.prototype.addDemande = function(data,callback) {
     var demande = new db.demandeModel({
         id_stagiaire :data.id_stagiaire,
         nom : data.nom,
-        dateDebut : Date(data.dateDebut),
-        dateFin : Date(data.dateDebut),
+        dateDebut :new Date(data.dateDebut),
+        dateFin :new Date(data.dateFin),
         specialite:data.specialite,
         description :data.description,
         nbrPersonne :data.nbrPersonne,

@@ -104,6 +104,19 @@ router.post("/byspecialite",auth, function (req, res) {
 
 });
 
+router.post("/byusername", function (req, res) {
+
+    var username = req.body.username;
+
+    stagiaireDAO.findByusername(username, function (err, stagiaire) {
+
+        if (err) res.send(err);
+        else res.send(stagiaire);
+
+    }); 
+
+});
+
 router.post("/byid",auth, function (req, res) {
 
     var id = req.body.id;

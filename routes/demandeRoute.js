@@ -8,6 +8,7 @@ router.post("/add",auth,function(req,res) {
     var data = {
         id_stagiaire:req.body.id_stagiaire,
         nom:req.body.nom,
+        ville:req.body.ville,
         dateDebut:req.body.dateDebut,
         dateFin:req.body.dateFin,
         specialite:req.body.specialite,
@@ -18,6 +19,8 @@ router.post("/add",auth,function(req,res) {
         specialite:req.body.specialite
         
     }
+
+ 
 
     demandeDAO.addDemande(data,function(err,demande) {
         if(err) res.send(err);

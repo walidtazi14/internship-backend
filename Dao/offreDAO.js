@@ -14,12 +14,13 @@ offreDAO.prototype.addOffre = function(data,callback) {
 
         id_entreprise:data.id_entreprise,
         nom : data.nom,
+        ville : data.ville,
         dateDebut :new Date(data.dateDebut),
         dateFin :new Date(data.dateFin),
         specialite:data.specialite,
         description :data.description,
         nbrPersonne :data.nbrPersonne,
-        remuneration:data.remuneration,
+        remuneration:Number(data.remuneration),
         niveau : data.niveau,
         diplome : data.diplome
 

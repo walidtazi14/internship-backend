@@ -9,12 +9,13 @@ router.post("/add",auth,function(req,res) {
    var data = {
        id_entreprise:req.body.id_entreprise,
        nom:req.body.nom,
+       ville :req.body.ville,
        dateDebut : req.body.dateDebut,
        dateFin : req.body.dateFin,
        specialite : req.body.specialite,
        description : req.body.description,
        nbrPersonne :req.body.nbrPersonne,
-       remunaration : req.body.remunaration,
+       remuneration : req.body.remuneration,
        niveau : req.body.niveau,
        diplome :req.body.diplome
    }
@@ -58,12 +59,13 @@ router.put("/update/:id",auth,function(req,res) {
 
         id : id,
         nom:req.body.nom,
+        ville:req.body.ville,
         dateDebut:req.body.dateDebut,
         dateFin:req.body.dateFin,
         specialite:req.body.specialite,
         description:req.body.description,
         nbrPersonne:req.body.nbrPersonne,
-        remunaration:req.body.remunaration,
+        remuneration:req.body.remuneration,
         niveau:req.body.niveau,
         diplome:req.body.diplome
 

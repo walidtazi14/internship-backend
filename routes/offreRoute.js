@@ -71,7 +71,7 @@ router.put("/update/:id",auth,function(req,res) {
 
     }
 
-    offreDAO.updateOffre(data,auth,function(err,offre) {
+    offreDAO.updateOffre(data,function(err,offre) {
 
         if(err) res.send(err);
         else res.send(offre);
@@ -82,12 +82,12 @@ router.put("/update/:id",auth,function(req,res) {
 
 router.post("/delete",auth,function(req,res) {
 
-    var id_entreprise = req.body.id_entreprise;
+    var id = req.body.id;
     
-    offreDAO.deleteOffre(id_entreprise,function(req,res){
+    offreDAO.deleteOffre(id,function(err,offre){
 
         if(err) res.send(err);
-        else res.send("Deteted succesfully !");
+        else res.send(offre);
     })
 
 
@@ -122,7 +122,7 @@ router.post("/byStagiaire",auth,function(req,res) {
     var id_entreprise =req.body.id_entreprise;
 
     offreDAO.findByEntreprise(id_entreprise,function(err,offre){
-
+        console.log(offre)
         if(err) res.send(err);
         else res.send(offre);
     });
@@ -135,6 +135,19 @@ router.post("/bySpecialite",auth,function(req,res) {
     var specialite =req.body.specialite;
 
     offreDAO.findBySpecialite(specialite,function(err,offre){
+
+        if(err) res.send(err);
+        else res.send(offre);
+    });
+
+
+});
+
+router.get("/byid/:id",auth,function(req,res) {
+
+    var id = req.params.id;
+
+    offreDAO.findById(id,function(err,offre){
 
         if(err) res.send(err);
         else res.send(offre);

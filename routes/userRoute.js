@@ -46,7 +46,6 @@ jwt.sign({username:user.username},key,function(err,token)
     if (err) {
         res.send({ message: "something's wrongs !"})
     }
-    console.log(user)
         res.send({ token,user})
 })
     }else res.send("user not found");

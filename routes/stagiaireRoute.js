@@ -5,6 +5,7 @@ var router = express.Router();
 var stagiaireDAO = require("../DAO/stagiaireDAO");
 
 var auth = require("../routes/auth");
+var db = require("../database/db");
 
 router.post("/add",function (req,res) {
 
@@ -128,5 +129,8 @@ router.post("/byid",auth, function (req, res) {
 
 });
 
+router.post('/uploadCv',db.upload.single('file'),function (req,res) {
+    res.json({ file: req.file });
+})
 
 module.exports = router;

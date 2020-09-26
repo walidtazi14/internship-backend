@@ -1,4 +1,11 @@
-var mongoose = require("mongoose");
+
+const bodyParser = require('body-parser');
+const path = require('path');
+const crypto = require('crypto');
+const mongoose = require('mongoose');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
 
 
 var user= new mongoose.Schema({
@@ -75,16 +82,40 @@ var user = new mongoose.Schema({
     role : [],
 });
 
-mongoose.connect("mongodb://souf:soufix@cluster0-shard-00-00.kqrtj.mongodb.net:27017,cluster0-shard-00-01.kqrtj.mongodb.net:27017,cluster0-shard-00-02.kqrtj.mongodb.net:27017/internship?ssl=true&replicaSet=atlas-koy83r-shard-0&authSource=admin&retryWrites=true&w=majority", {
+const conn =mongoose.connect("mongodb://souf:soufix@cluster0-shard-00-00.kqrtj.mongodb.net:27017,cluster0-shard-00-01.kqrtj.mongodb.net:27017,cluster0-shard-00-02.kqrtj.mongodb.net:27017/internship?ssl=true&replicaSet=atlas-koy83r-shard-0&authSource=admin&retryWrites=true&w=majority", {
 
 //useMongoClient: true
 });
+let gfs;
 
      
 
 mongoose.connection.once('open', function() {
     console.log("Successfully connected to the database");
+    gfs = Grid(mongoose.connection.db, mongoose.mongo);
+    gfs.collection('uploads');
 });
+
+const storage = new GridFsStorage({
+    url: "mocluster0ngodb://souf:soufix@-shard-00-00.kqrtj.mongodb.net:27017,cluster0-shard-00-01.kqrtj.mongodb.net:27017,cluster0-shard-00-02.kqrtj.mongodb.net:27017/internship?ssl=true&replicaSet=atlas-koy83r-shard-0&authSource=admin&retryWrites=true&w=majority",
+    file: (req, file) => {
+      return new Promise((resolve, reject) => {
+        crypto.randomBytes(16, (err, buf) => {
+          if (err) {
+            return reject(err);
+          }
+          const filename = buf.toString('hex') + path.extname(file.originalname);
+          const fileInfo = {
+            filename: filename,
+            bucketName: 'uploads'
+          };
+          resolve(fileInfo);
+        });
+      });
+    }
+  });
+  
+  const upload = multer({ storage });
 
 var stagiaireModel = mongoose.model("stagiaire",stagiaire);
 var demandeModel = mongoose.model("demande",demande);
@@ -97,4 +128,5 @@ module.exports.userModel = userModel;
 module.exports.stagiaireModel = stagiaireModel;
 module.exports.demandeModel =demandeModel ;
 module.exports.entrepriseModel =entrepriseModel;
+module.exports.upload = upload;
 

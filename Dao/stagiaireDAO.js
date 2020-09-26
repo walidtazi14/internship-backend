@@ -94,6 +94,8 @@ stagiaireDAO.prototype.countst = function(callback) {
 }
 
 
+
+
 module.exports = new stagiaireDAO();
 
 

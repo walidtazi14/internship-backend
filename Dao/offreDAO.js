@@ -39,11 +39,11 @@ offreDAO.prototype.updateOffre = function(data,callback) {
         else {
 
 
-            
+            offre.ville = data.ville;
             offre.nom = data.nom;
-            offre.dateDebut = data.dateDebut;
-            offre.dateFin = data.dateFin;
-            offre.specialite = data.specialite;
+            offre.dateDebut =new Date(data.dateDebut);
+            offre.dateFin = new Date(data.dateFin);
+            offre.specialite =  data.specialite;
             offre.description =data.description;
             offre.nbrPersonne = data.nbrPersonne;
             offre.remuneration = data.remuneration;
@@ -58,7 +58,7 @@ offreDAO.prototype.updateOffre = function(data,callback) {
 
     });
 }
-offreDAO.prototype.deleteoffre = function(id,callback) {
+offreDAO.prototype.deleteOffre = function(id,callback) {
 
   db.offreModel.findOne({_id:id},function(err,offre){
 
@@ -88,7 +88,7 @@ offreDAO.prototype.findBySpecialite = function(specialite,callback) {
 
 offreDAO.prototype.findByEntreprise = function(id_entreprise,callback) {
 
-    db.offreModel.findOne({_id_entreprise:id_entreprise}).populate("stagiaire").exec(callback);
+    db.offreModel.find({id_entreprise:id_entreprise},callback);
 
 }
 

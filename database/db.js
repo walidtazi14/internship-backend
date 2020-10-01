@@ -82,6 +82,10 @@ var user = new mongoose.Schema({
     role : [],
 });
 
+var file =new mongoose.Schema({
+  body:String
+})
+
 const conn =mongoose.connect("mongodb://souf:soufix@cluster0-shard-00-00.kqrtj.mongodb.net:27017,cluster0-shard-00-01.kqrtj.mongodb.net:27017,cluster0-shard-00-02.kqrtj.mongodb.net:27017/internship?ssl=true&replicaSet=atlas-koy83r-shard-0&authSource=admin&retryWrites=true&w=majority", {
 
 //useMongoClient: true
@@ -93,7 +97,7 @@ let gfs;
 mongoose.connection.once('open', function() {
     console.log("Successfully connected to the database");
     gfs = Grid(mongoose.connection.db, mongoose.mongo);
-    gfs.collection('uploads');
+    gfs.collection('files');
 });
 
 const storage = new GridFsStorage({
@@ -107,7 +111,7 @@ const storage = new GridFsStorage({
           const filename = buf.toString('hex') + path.extname(file.originalname);
           const fileInfo = {
             filename: filename,
-            bucketName: 'uploads'
+            bucketName: 'files'
           };
           resolve(fileInfo);
         });
@@ -122,11 +126,12 @@ var demandeModel = mongoose.model("demande",demande);
 var entrepriseModel = mongoose.model("entreprise",entreprise);
 var userModel = mongoose.model("users",user);
 var offreModel = mongoose.model("offre",offre);
-
+var fileModel = mongoose.model("file",file);
 module.exports.offreModel = offreModel;
 module.exports.userModel = userModel;
 module.exports.stagiaireModel = stagiaireModel;
 module.exports.demandeModel =demandeModel ;
 module.exports.entrepriseModel =entrepriseModel;
 module.exports.upload = upload;
+module.exports.fileModel = fileModel;
 

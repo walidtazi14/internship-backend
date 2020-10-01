@@ -130,6 +130,10 @@ router.post("/byid",auth, function (req, res) {
 });
 
 router.post('/uploadCv',db.upload.single('file'),function (req,res) {
+    var file = new db.fileModel({
+        body : req.body.file
+    })
+    file.save();
     res.json({ file: req.file });
 })
 

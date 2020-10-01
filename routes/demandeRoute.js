@@ -83,11 +83,11 @@ router.post("/delete",auth,function(req,res) {
 });
 
 
-router.post("/byId",auth,function(req,res) {
+router.get("/byid/:id",auth,function(req,res) {
 
-    var id = req.body.id;
+    var id = req.params.id;
 
-    demandeDAO.findById(demande,function(err,demande) {
+    demandeDAO.findById(id,function(err,demande) {
 
         if(err) res.send(err);
         else res.send(demande);
@@ -109,7 +109,7 @@ router.post("/byspecialite",auth,function(req,res) {
 
 });
 
-router.post("/ByStagiaire",auth,function(req,res) {
+router.post("/byStagiaire",auth,function(req,res) {
 
     var id_stagiaire = req.body.id_stagiaire;
 

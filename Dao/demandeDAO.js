@@ -90,7 +90,7 @@ demandeDAO.prototype.findBySpecialite = function(specialite,callback) {
 }
 demandeDAO.prototype.findByStagiaire = function(id_stagiaire,callback) {
 
-    db.demandeModel.find({_id_stagiaire:id_stagiaire},callback);
+    db.demandeModel.find({id_stagiaire:id_stagiaire},callback);
 
 }
 

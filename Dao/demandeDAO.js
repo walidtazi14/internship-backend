@@ -20,7 +20,6 @@ demandeDAO.prototype.addDemande = function(data,callback) {
         dateFin :new Date(data.dateFin),
         specialite:data.specialite,
         description :data.description,
-        nbrPersonne :data.nbrPersonne,
         remuneration:data.remuneration,
         niveau : data.niveau,
         diplome : data.diplome
@@ -46,7 +45,6 @@ demandeDAO.prototype.updateDemande = function(data,callback) {
             demande.dateFin = data.dateFin;
             demande.specialite=data.specialite;
             demande.description=data.description;
-            demande.nbrPersonne=data.nbrPersonne;
             demande.remuneration=data.remuneration;
             demande.niveau=data.niveau;
             demande.diplome=data.diplome;

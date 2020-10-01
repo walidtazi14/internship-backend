@@ -12,6 +12,7 @@ router.post("/add",function (req,res) {
     var data = {
         nom: req.body.nom,
         prenom: req.body.prenom,
+        sexe:req.body.sexe,
         cin:req.body.cin,
         email: req.body.email,
         dateNaissance: req.body.dateNaissance,

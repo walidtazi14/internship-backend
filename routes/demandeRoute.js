@@ -13,7 +13,6 @@ router.post("/add",auth,function(req,res) {
         dateFin:req.body.dateFin,
         specialite:req.body.specialite,
         description:req.body.description,
-        nbrPersonne:req.body.nbrPersonne,
         remuneration:req.body.remuneration,
         niveau:req.body.niveau,
         specialite:req.body.specialite
@@ -55,7 +54,6 @@ router.put("/update/:id",auth,function(req,res) {
         dateFin:req.body.dateFin,
         specialite:req.body.specialite,
         description:req.body.description,
-        nbrPersonne:req.body.nbrPersonne,
         remuneration:req.body.remuneration,
         niveau:req.body.niveau,
         diplome:req.body.diplome

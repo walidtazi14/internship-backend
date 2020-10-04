@@ -68,7 +68,7 @@ router.put("/update/:id",auth,function(req,res) {
     entrepriseDAO.updateEntreprise(data,function(err,entreprise) {
         
         if(err) res.send(err);
-        else res.send(entreprise);
+        else ;
 
     });
 

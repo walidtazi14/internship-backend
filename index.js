@@ -35,7 +35,7 @@ app.use("/api/entreprise",entrepriseRoute);
 app.use("/api/offre",offreRoute);
 
 app.use("/api/user",userRoute);
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log("Server is listening on port 3000");
 });
 module.exports = app;

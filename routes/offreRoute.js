@@ -122,7 +122,6 @@ router.post("/byStagiaire",auth,function(req,res) {
     var id_entreprise =req.body.id_entreprise;
 
     offreDAO.findByEntreprise(id_entreprise,function(err,offre){
-        console.log(offre)
         if(err) res.send(err);
         else res.send(offre);
     });

@@ -2,8 +2,8 @@ var express = require("express");
 
 var router = express.Router();
 
-var offreDAO = require("../DAO/offreDAO");
-var auth = require("../routes/auth");
+var offreDAO = require("/app/DAO/offreDAO");
+var auth = require("/app/routes/auth");
 
 router.post("/add",auth,function(req,res) {
    var data = {

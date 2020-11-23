@@ -1,5 +1,5 @@
-var db = require("../database/db");
-var entrepriseService = require("../service/entrepriseService");
+var db = require("/app/database/db");
+var entrepriseService = require("/app/service/entrepriseService");
 
 
 var entrepriseDAO = function() {    

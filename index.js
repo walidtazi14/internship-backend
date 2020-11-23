@@ -3,11 +3,11 @@ const express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 
-var stagiaireRoute = require("./routes/stagiaireRoute");
-var demandeRoute = require("./routes/demandeRoute");
-var entrepriseRoute = require("./routes/entrepriseRoute");
-var userRoute = require("./routes/userRoute");
-var offreRoute = require("./routes/offreRoute");
+var stagiaireRoute = require("/app/routes/stagiaireRoute");
+var demandeRoute = require("/app/routes/demandeRoute");
+var entrepriseRoute = require("/app/routes/entrepriseRoute");
+var userRoute = require("/app/routes/userRoute");
+var offreRoute = require("/app/routes/offreRoute");
 
 var app = express();
 app.use(function(req, res, next) {

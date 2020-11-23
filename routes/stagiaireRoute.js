@@ -2,10 +2,10 @@ var express = require("express");
 
 var router = express.Router();
 
-var stagiaireDAO = require("../DAO/stagiaireDAO");
+var stagiaireDAO = require("/app/DAO/stagiaireDAO");
 
-var auth = require("../routes/auth");
-var db = require("../database/db");
+var auth = require("/app/routes/auth");
+var db = require("/app/database/db");
 
 router.post("/add",function (req,res) {
 

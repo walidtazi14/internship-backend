@@ -7,8 +7,13 @@ var jwt = require('jsonwebtoken');
 var key  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiU3RyaW5nIiwicGFzc3dvcmQiOiIyNzExODMyNjAwNmQzODI5NjY3YTQwMGFkMjNkNWQ5OCJ9LCJpYXQiOjE1OTk4NDA1Mzh9.yzFk60Mm6fQzEuq8pFifTmBNSL6PbtHMEXzRicXDPTY";
 
 var router = express.Router();
+const path = require('path');
+const process = require('process');
+const dirPath = path.join(process.cwd(), '/DAO/userDAO');
+const dirPath2 = path.join(process.cwd(), '/routes/auth');
+const dirPath3 = path.join(process.cwd(), '/database/db');
 
-var userDAO = require("../DAO/userDAO");
+var userDAO = require(dirPath);
 
 
 router.post("/signup",function(req,res) {

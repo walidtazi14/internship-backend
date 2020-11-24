@@ -1,5 +1,10 @@
-var db = require("../database/db");
-var entrepriseService = require("../service/entrepriseService");
+const path = require('path');
+const process = require('process');
+const dirPath = path.join(process.cwd(), '/service/entrepriseService');
+const dirPath2 = path.join(process.cwd(), '/routes/auth');
+const dirPath3 = path.join(process.cwd(), '/database/db');
+var db = require(dirPath3);
+var entrepriseService = require(dirPath);
 
 
 var entrepriseDAO = function() {    

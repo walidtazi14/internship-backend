@@ -1,11 +1,15 @@
 var express = require("express");
 
 var router = express.Router();
+const path = require('path');
+const process = require('process');
+const dirPath = path.join(process.cwd(), '/DAO/stagiaireDAO');
+const dirPath2 = path.join(process.cwd(), '/routes/auth');
+const dirPath3 = path.join(process.cwd(), '/database/db');
+var stagiaireDAO = require(dirPath);
 
-var stagiaireDAO = require("../DAO/stagiaireDAO");
-
-var auth = require("../routes/auth");
-var db = require("../database/db");
+var auth = require(dirPath2);
+var db = require(dirPath3);
 
 router.post("/add",function (req,res) {
 

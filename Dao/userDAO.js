@@ -1,7 +1,13 @@
-var db = require("../database/db");
+
+const path = require('path');
+const process = require('process');
+const dirPath = path.join(process.cwd(), '/service/userService');
+const dirPath2 = path.join(process.cwd(), '/routes/auth');
+const dirPath3 = path.join(process.cwd(), '/database/db');
+var db = require(dirPath3);
 var md5 = require('md5');
 
-var userService = require("../service/userService");
+var userService = require(dirPath);
 
 
 var userDAO = function() {

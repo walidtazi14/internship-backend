@@ -1,5 +1,11 @@
-var stagiaireService = require("../service/stagiaireService");
-var db = require("../database/db");
+
+const path = require('path');
+const process = require('process');
+const dirPath = path.join(process.cwd(), '/service/stagiaireService');
+const dirPath2 = path.join(process.cwd(), '/routes/auth');
+const dirPath3 = path.join(process.cwd(), '/database/db');
+var db = require(dirPath3);
+var stagiaireService = require(dirPath);
 
 var  stagiaireDAO  = function() {
 

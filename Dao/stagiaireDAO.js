@@ -1,5 +1,5 @@
-var stagiaireService = require("/app/service/stagiaireService");
-var db = require("/app/database/db");
+var stagiaireService = require("../service/stagiaireService");
+var db = require("../database/db");
 
 var  stagiaireDAO  = function() {
 

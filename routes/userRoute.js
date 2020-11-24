@@ -8,7 +8,7 @@ var key  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiU3R
 
 var router = express.Router();
 
-var userDAO = require("/app/DAO/userDAO");
+var userDAO = require("../DAO/userDAO");
 
 
 router.post("/signup",function(req,res) {

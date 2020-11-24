@@ -1,7 +1,7 @@
-var db = require("/app/database/db");
+var db = require("../database/db");
 var md5 = require('md5');
 
-var userService = require("/app/service/userService");
+var userService = require("../service/userService");
 
 
 var userDAO = function() {

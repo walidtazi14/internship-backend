@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
-var demandeDAO = require("/app/DAO/demandeDAO");
-var auth = require("/app/routes/auth");
+var demandeDAO = require("../DAO/demandeDAO");
+var auth = require("../routes/auth");
 
 router.post("/add",auth,function(req,res) {
 

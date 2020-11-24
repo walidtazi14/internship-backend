@@ -2,9 +2,9 @@ var express = require("express");
 
 var router = express.Router();
 
-var entrepriseDAO = require("/app/DAO/entrepriseDAO");
+var entrepriseDAO = require("../DAO/entrepriseDAO");
 
-var auth = require("/app/routes/auth");
+var auth = require("../routes/auth");
 
 
 router.post("/add",function(req,res) {

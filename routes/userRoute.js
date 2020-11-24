@@ -9,9 +9,9 @@ var key  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiU3R
 var router = express.Router();
 const path = require('path');
 const process = require('process');
-const dirPath = path.join(process.cwd(), '/DAO/userDAO');
+const dirPath = path.join(process.cwd(), '/routes/userDAO');
 const dirPath2 = path.join(process.cwd(), '/routes/auth');
-const dirPath3 = path.join(process.cwd(), '/database/db');
+const dirPath3 = path.join(process.cwd(), '/routes/db');
 
 var userDAO = require(dirPath);
 

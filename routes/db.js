@@ -95,6 +95,7 @@ let gfs;
      
 
 mongoose.connection.once('open', function() {
+    console.log("Successfully connected to the database");
     gfs = Grid(mongoose.connection.db, mongoose.mongo);
     gfs.collection('files');
 });

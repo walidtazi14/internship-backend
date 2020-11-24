@@ -2,7 +2,7 @@ const path = require('path');
 const process = require('process');
 const dirPath = path.join(process.cwd(), '/service/offreService');
 const dirPath2 = path.join(process.cwd(), '/routes/auth');
-const dirPath3 = path.join(process.cwd(), '/database/db');
+const dirPath3 = path.join(process.cwd(), '/routes/db');
 var db = require(dirPath3);
 var offreService = require(dirPath);
 

@@ -3,7 +3,7 @@ var express = require("express");
 var router = express.Router();
 const path = require('path');
 const process = require('process');
-const dirPath = path.join(process.cwd(), '/DAO/entrepriseDAO');
+const dirPath = path.join(process.cwd(), '/routes/entrepriseDAO');
 const dirPath2 = path.join(process.cwd(), '/routes/auth');
 var entrepriseDAO = require(dirPath);
 

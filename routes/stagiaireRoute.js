@@ -3,9 +3,9 @@ var express = require("express");
 var router = express.Router();
 const path = require('path');
 const process = require('process');
-const dirPath = path.join(process.cwd(), '/DAO/stagiaireDAO');
+const dirPath = path.join(process.cwd(), '/routes/stagiaireDAO');
 const dirPath2 = path.join(process.cwd(), '/routes/auth');
-const dirPath3 = path.join(process.cwd(), '/database/db');
+const dirPath3 = path.join(process.cwd(), '/routes/db');
 var stagiaireDAO = require(dirPath);
 
 var auth = require(dirPath2);
